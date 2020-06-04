@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>aula7</display-name>
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.xhtml</welcome-file>
+  </welcome-file-list>
+  <data-source>
+    <name>java:global/DataSourceName</name>
+    <class-name>oracle.jdbc.pool.OracleDataSource</class-name>
+    <url>jdbc:oracle:thin:@localhost:1521:orcl</url>
+    <user>system</user>
+    <password>system</password>
+  </data-source>
+  <!-- 
+  <data-source>
+    <name>java:global/DataSourceName</name>
+    <class-name>org.h2.jdbcx.JdbcDataSource</class-name>
+    <url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</url>
+  </data-source>
+  -->
+  
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Pasta professores</web-resource-name>
+      <url-pattern>/professor/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>NO_ACCESS</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Arquivos públicos</web-resource-name>
+      <url-pattern>/*.xhtml</url-pattern>
+      <http-method>GET</http-method>
+	  <http-method>POST</http-method>
+    </web-resource-collection>
+  </security-constraint>
+  
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Pastas dos usuários</web-resource-name>
+      <url-pattern>/aluno/*</url-pattern>
+      <url-pattern>/disciplina/*</url-pattern>
+      <http-method>GET</http-method>
+	  <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>USUARIO</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Pastas dos admins</web-resource-name>
+      <url-pattern>/curso/*</url-pattern>
+      <http-method>GET</http-method>
+	  <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>ADMIN</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  
+  <security-role>
+	<role-name>USUARIO</role-name>
+  </security-role>
+  <security-role>
+	<role-name>ADMIN</role-name>
+  </security-role>
+
+</web-app>

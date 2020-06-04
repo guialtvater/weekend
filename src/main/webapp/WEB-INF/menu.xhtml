@@ -1,0 +1,29 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <div>
+	    <h:link value="Alunos" outcome="/aluno/index.xhtml" />&#160;
+	    <h:link value="Cursos" outcome="/curso/index.xhtml" />&#160;
+	    <h:link value="Professores" outcome="/professor/index.xhtml" />&#160;
+	    <h:link value="Disciplinas" outcome="/disciplina/index.xhtml" />&#160;  
+    	<c:if test="#{not empty request.userPrincipal}">
+			Email #{request.userPrincipal.name} 
+			<h:form style="display:inline">
+				<h:commandButton value="Sair" action="#{logout.sair}"/>
+			</h:form>
+		</c:if>
+		<c:if test="#{empty request.userPrincipal}">
+			<h:form style="display:inline">
+				<h:button value="Logar" outcome="/login">
+					<f:param name="new" value="true" />
+				</h:button>
+				<h:button value="Cadastrar-se" outcome="/cadastrar">
+					<f:param name="new" value="true" />
+				</h:button>
+			</h:form>
+		</c:if>    	
+    </div><br />
+</ui:composition>
