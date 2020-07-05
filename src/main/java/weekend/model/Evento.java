@@ -1,13 +1,10 @@
 package weekend.model;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 public class Evento implements Serializable{
 	
@@ -27,6 +24,8 @@ public class Evento implements Serializable{
 	private @NotNull Double valorEntrada;
 	@OneToMany(mappedBy = "evento")
 	private List<Produto> cardapio;
+	@OneToMany(mappedBy = "evento")
+	private List<Cliente> clientes;
 	
 	public Long getId() {
 		return id;
@@ -63,6 +62,13 @@ public class Evento implements Serializable{
 	}
 	public void setCardapio(List<Produto> cardapio) {
 		this.cardapio = cardapio;
+	}
+	
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;

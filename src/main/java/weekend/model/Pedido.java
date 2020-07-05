@@ -9,9 +9,6 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import weekend.model.Cliente;
-import weekend.model.Produto;
-
 public class Pedido implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

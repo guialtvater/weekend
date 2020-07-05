@@ -6,11 +6,8 @@ import java.lang.String;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
-import weekend.model.Produto;
 
 
 /**

@@ -4,4 +4,44 @@
   <artifactId>weekend</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>weekend</name>
+  
+    <dependencies>
+  	<dependency>
+  		<groupId>javax</groupId>
+  		<artifactId>javaee-api</artifactId>
+  		<version>8.0</version>
+  		<scope>provided</scope>	
+  	</dependency> 
+  	
+  	<!-- 
+  	<dependency>
+  		<groupId>com.h2database</groupId>
+  		<artifactId>h2</artifactId>
+  		<version>1.4.200</version>	
+  	</dependency> 
+  	-->
+  	<!-- https://mvnrepository.com/artifact/com.oracle.jdbc/ojdbc6 -->
+	<dependency>
+	    <groupId>com.oracle</groupId>
+	    <artifactId>ojdbc</artifactId>
+	    <version>6</version>
+	    <scope>system</scope>
+	    <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-core</artifactId>
+	    <version>5.4.14.Final</version>
+	</dependency>
+	
+	<dependency>
+        <groupId>org.glassfish.soteria</groupId>
+        <artifactId>javax.security.enterprise</artifactId>
+        <version>1.0</version>
+        <scope>provided</scope>
+ 	</dependency>
+		
+  </dependencies> 
 </project>
