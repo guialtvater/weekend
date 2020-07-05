@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Evento</title>
+</h:head> 
+<h:body> 
+	<ui:include src="/WEB-INF/menu.xhtml" />
+	<h:form>
+		<h:outputText id="id" value="#{eventoCT.evento.id}" /><br />
+		<h:outputLabel for="nome" value="Nome:"/>
+		<h:inputText id="nome" value="#{eventoCT.evento.nome}" /><br />
+		<h:outputLabel for="cliente" value="Cliente:"/>
+		<h:selectOneMenu value="#{eventoCT.evento.cliente.id}">
+			<f:selectItems value="#{clienteCT.clientes}" var="c" itemValue="#{c.id}" itemLabel="#{c.nome}" />
+		</h:selectOneMenu><br />
+		<h:commandButton value="Enviar" action="#{eventoCT.atualizar}"/>
+	</h:form>
+</h:body> 
+</html>

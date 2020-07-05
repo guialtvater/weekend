@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Evento</title>
+</h:head> 
+<h:body> 
+	<ui:include src="/WEB-INF/menu.xhtml" />
+	<h:form>
+		<h:outputLabel for="id" value="ID:"/>
+		<h:outputText id="id" value="#{eventoCT.evento.id}" /><br />
+		<h:outputLabel for="nome" value="Nome:"/>
+		<h:outputText id="nome" value="#{eventoCT.evento.nome}" /><br />
+		<h:outputLabel for="cliente" value="Cliente:"/>
+		<h:outputText id="cliente" value="#{eventoCT.evento.cliente.nome}" /><br />
+		<h:commandButton value="Adicionar evento" action="#{eventoCT.addEvento}"/><br />
+		 
+		<h:dataTable id="saida" value="#{eventoCT.evento.clientes}" var="a">
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				#{a.nome}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Sobrenome</f:facet>
+				#{a.sobrenome}
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body> 
+</html>

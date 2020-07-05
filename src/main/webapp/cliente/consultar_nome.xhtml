@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Cliente</title>
+</h:head> 
+<h:body> 
+	<ui:include src="/WEB-INF/menu.xhtml" />
+	<h:link value = "Novo cliente" outcome = "/cliente/novo.xhtml" /> <br />
+	<h:form>
+	
+		<h:outputLabel for="nome" value="Buscar por nome:" />
+		<h:inputText id="nome"
+		value="#{clienteCT.consulta}" />
+		<h:commandButton value="Enviar"
+		action="#{clienteCT.consultarPorCliente}">
+		<f:ajax execute="@form" render="saida" />
+		</h:commandButton>
+		
+		<br />
+		
+		<h:dataTable id="saida" value="#{clienteCT.clientes}" var="a">
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				#{a.nome}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Sobrenome</f:facet>
+				#{a.sobrenome}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Data de nascimento</f:facet>
+				#{a.dataNascimento}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Saldo</f:facet>
+				#{a.saldo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ver</f:facet>
+				<h:commandButton value="Ver" update='saida' action="#{clienteCT.ver(a.id)}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandButton value="Editar" update='saida' action="#{clienteCT.editar(a.id)}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Remover</f:facet>
+				<h:commandButton value="X" update='saida' action="#{clienteCT.remover(a.id)}"/>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body> 
+</html>

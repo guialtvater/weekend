@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Cliente</title>
+</h:head> 
+<h:body> 
+	<ui:include src="/WEB-INF/menu.xhtml" />
+	<h:form>
+		<h:outputText id="id" value="#{alunoCT.aluno.id}" /><br />
+		<h:outputLabel for="nome" value="Nome:"/>
+		<h:inputText id="nome" value="#{alunoCT.aluno.nome}" /><br />
+		<h:outputLabel for="sobrenome" value="Sobrenome:"/>
+		<h:inputText id="sobrenome" value="#{alunoCT.aluno.sobrenome}" /><br />
+		<h:outputLabel for="dataNascimento" value="data"/>
+		<h:inputDate id="dataNascimento" value="#{clienteCT.cliente.dataNascimento}" /><br />
+		<h:outputLabel for="saldo" value="Saldo"/>
+		<h:inputNumber id="saldo" value="#{clienteCT.cliente.saldo}" /><br />
+		<h:commandButton value="Enviar" action="#{alunoCT.novo}"/>
+	</h:form>
+</h:body> 
+</html>

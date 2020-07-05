@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Aluno</title>
+</h:head> 
+<h:body> 
+	<ui:include src="/WEB-INF/menu.xhtml" />
+	<h:link value = "Novo cliente" outcome = "/cliente/novo.xhtml" /> &#160;
+	<h:link value = "Consultar por nome" outcome="/cliente/consultar_nome.xhtml" /><br />
+	<h:form>
+		<h:dataTable id="saida" value="#{alunoCT.alunos}" var="a">
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				#{a.nome}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Sobrenome</f:facet>
+				#{a.sobrenome}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Data Nascimento</f:facet>
+				#{a.dataNascimento}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Saldo</f:facet>
+				#{a.saldo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ver</f:facet>
+				<h:commandButton value="Ver" update='saida' action="#{alunoCT.ver(a.id)}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandButton value="Editar" update='saida' action="#{alunoCT.editar(a.id)}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Remover</f:facet>
+				<h:commandButton value="X" update='saida' action="#{alunoCT.remover(a.id)}"/>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body> 
+</html>
